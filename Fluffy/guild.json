@@ -1,0 +1,42 @@
+{
+  "Guild": 844528630587850782,
+  
+  "RoleChannel": 1172287074586611802,
+  "ErrorChannel": 1171835210900447232,
+  
+  "FoxTypeMessage": null,  
+  "PronounsMessage": null,
+  "NsfwMessage": null,
+  
+  "FoxRoleHeaderRoleId": 1171801884626001931,
+  "AdminFoxRoleId": 1171726085025706014,
+  "SupporterFoxRoleId": 1171726429348700231,
+  "MemberRoleId": 1171942777525899517,
+  "FoxInfoHeaderRoleId": 1171802030721998868,
+  "RedFoxRoleId": 1171801032515391488,
+  "GrayFoxRoleId": 1171801170390552720,
+  "SilverFoxRoleId": 1171801308689350677,
+  "FennecFoxRoleId": 1171801431196586014,
+  "ArcticFoxRoleId": 1171801491003146363,
+  "UnknownFoxRoleId": 1171935053077553214,
+  
+  "RedFoxRoleEmote": ":one:",
+  "GrayFoxRoleEmote": ":two:",
+  "SilverFoxRoleEmote": ":three:",
+  "FennecFoxRoleEmote": ":four:",
+  "ArcticFoxRoleEmote": ":five:",
+
+  "HumanRoleId": 1171801539703230476,
+  "HumanRoleEmote": ":zero:",
+  
+  "FemalePronounsRoleId": 1171816895331188776,
+  "FemalePronounsRoleEmote": ":heart:",
+  "MalePronounsRoleId": 1171816750497665085,
+  "MalePronounsRoleEmote": ":blue_heart:",
+  "DiversPronounsRoleId": 1171816949550952528,
+  "DiversPronounsRoleEmote": ":purple_heart:",
+  "UnknownPronounsRoleId": 1171945942468001854,
+  
+  "NaughtyFoxRoleId": 1171869760934395954,
+  "NaughtyFoxRoleEmote": ":underage:"
+}
