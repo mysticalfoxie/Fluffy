@@ -59,6 +59,7 @@ public class GuildConfig
     public ulong ErrorChannel { get; set; }
     public ulong GeneralRulesChannel { get; set; }
     public ulong NsfwRulesChannel { get; set; }
+    public ulong StrangerRoleId { get; set; }
 
     public async Task Update(Action<GuildConfig> action)
     {

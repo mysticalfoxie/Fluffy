@@ -51,7 +51,7 @@ public class RuleEmbedHandler : IHandler
         _logger.LogInformation("General rules message has been sent.");
     }
 
-    private async Task<bool> GetOrSendNsfwRulesMessage()
+    private async Task GetOrSendNsfwRulesMessage()
     {
         var nsfwRulesMessageId = Program.GuildConfig.NsfwRulesMessage;
         if (nsfwRulesMessageId.HasValue)
@@ -60,14 +60,13 @@ public class RuleEmbedHandler : IHandler
             if (_nsfwRulesMessage is not null)
             {
                 _logger.LogInformation("Nsfw rules message could be recovered.");
-                return true;
+                return;
             }
         }
 
         _nsfwRulesMessage = await SendNsfwRulesMessage();
         await Program.GuildConfig.Update(x => x.NsfwRulesMessage = _nsfwRulesMessage.Id);
         _logger.LogInformation("Nsfw rules message has been sent.");
-        return false;
     }
 
     private async Task<IMessage> SendNsfwRulesMessage()
@@ -175,6 +174,8 @@ public class RuleEmbedHandler : IHandler
         }
 
         await user.AddRoleAsync(Program.GuildConfig.MemberRoleId);
+        if (user.RoleIds.Contains(Program.GuildConfig.StrangerRoleId))
+            await user.RemoveRoleAsync(Program.GuildConfig.StrangerRoleId);
         if (!user.RoleIds.Contains(Program.GuildConfig.FoxInfoHeaderRoleId))
             await user.AddRoleAsync(Program.GuildConfig.FoxInfoHeaderRoleId);
         if (!user.RoleIds.Contains(Program.GuildConfig.FoxRoleHeaderRoleId))
