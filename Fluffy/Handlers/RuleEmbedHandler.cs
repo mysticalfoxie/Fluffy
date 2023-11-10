@@ -72,7 +72,7 @@ public class RuleEmbedHandler : IHandler
 
     private async Task<IMessage> SendNsfwRulesMessage()
     {
-        return await _generalRulesChannel.SendMessageAsync(
+        return await _nsfwRulesChannel.SendMessageAsync(
             embed: new EmbedBuilder()
                 .WithTitle("­ ­ ­ ­ ­ ­ ­ ­ ­ ­ - ̗̀  ­ ­ NSFW Rules ­ ­ ̖́-")
                 .WithDescription(
