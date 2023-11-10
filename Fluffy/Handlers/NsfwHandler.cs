@@ -31,9 +31,14 @@ public class NsfwHandler : IHandler
             if (arguments.Data.CustomId != "nsfw") return;
 
             var user = await _channel.GetUserAsync(arguments.User.Id);
-            if (user.RoleIds.Contains(Program.GuildConfig.NaughtyFoxUnapprovedRoleId))
+            if (user.RoleIds.Contains(Program.GuildConfig.NaughtyFoxUnapprovedRoleId) ||
+                user.RoleIds.Contains(Program.GuildConfig.NaughtyFoxRoleId))
             {
-                await user.RemoveRoleAsync(Program.GuildConfig.NaughtyFoxUnapprovedRoleId);
+                if (user.RoleIds.Contains(Program.GuildConfig.NaughtyFoxUnapprovedRoleId))
+                    await user.RemoveRoleAsync(Program.GuildConfig.NaughtyFoxUnapprovedRoleId);
+                if (user.RoleIds.Contains(Program.GuildConfig.NaughtyFoxRoleId))
+                    await user.RemoveRoleAsync(Program.GuildConfig.NaughtyFoxRoleId);
+                
                 await arguments.RespondAsync(
                     ephemeral: true,
                     embed: new EmbedBuilder()
@@ -44,7 +49,6 @@ public class NsfwHandler : IHandler
             }
             else
             {
-                await user.AddRoleAsync(Program.GuildConfig.NaughtyFoxUnapprovedRoleId);
                 await arguments.RespondAsync(
                     ephemeral: true,
                     embed: new EmbedBuilder()
