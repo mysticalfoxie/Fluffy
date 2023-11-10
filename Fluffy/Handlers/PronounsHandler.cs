@@ -71,7 +71,7 @@ public class PronounsHandler : IHandler
             await component.RespondAsync(
                 ephemeral: true,
                 embed: new EmbedBuilder()
-                    .WithDescription($"✅ ┊ You switch from\n<@&{toRemove.First()}>\nto your new role\n<@&{roleId}>")
+                    .WithDescription($"✅ ┊ Your role\n<@&{toRemove.First()}>\nhas been replaced with\n<@&{roleId}>")
                     .WithColor(0x00e05e)
                     .Build());
             return;
@@ -80,7 +80,7 @@ public class PronounsHandler : IHandler
         await component.RespondAsync(
             ephemeral: true,
             embed: new EmbedBuilder()
-                .WithDescription($"✅ ┊ You have been assigned as a\n<@&{roleId}>")
+                .WithDescription($"✅ ┊ You received the role\n<@&{roleId}>")
                 .WithColor(0x00e05e)
                 .Build());
     }
