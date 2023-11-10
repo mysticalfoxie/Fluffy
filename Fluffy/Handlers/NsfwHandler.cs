@@ -31,9 +31,9 @@ public class NsfwHandler : IHandler
             if (arguments.Data.CustomId != "nsfw") return;
 
             var user = await _channel.GetUserAsync(arguments.User.Id);
-            if (user.RoleIds.Contains(Program.GuildConfig.NaughtyFoxRoleId))
+            if (user.RoleIds.Contains(Program.GuildConfig.NaughtyFoxUnapprovedRoleId))
             {
-                await user.RemoveRoleAsync(Program.GuildConfig.NaughtyFoxRoleId);
+                await user.RemoveRoleAsync(Program.GuildConfig.NaughtyFoxUnapprovedRoleId);
                 await arguments.RespondAsync(
                     ephemeral: true,
                     embed: new EmbedBuilder()
@@ -44,7 +44,7 @@ public class NsfwHandler : IHandler
             }
             else
             {
-                await user.AddRoleAsync(Program.GuildConfig.NaughtyFoxRoleId);
+                await user.AddRoleAsync(Program.GuildConfig.NaughtyFoxUnapprovedRoleId);
                 await arguments.RespondAsync(
                     ephemeral: true,
                     embed: new EmbedBuilder()
@@ -56,7 +56,8 @@ public class NsfwHandler : IHandler
         }
         catch (Exception ex)
         {
-            ErrorHandler.HandleError("An error occurred when trying to handle a select menu response.", ex);
+            ErrorHandler.HandleError("An error occurred when trying to handle the nsfw button.", ex);
+            ErrorHandler.HandleInteractionError("An error occurred when trying to handle the nsfw button.", arguments);
         }
     }
 

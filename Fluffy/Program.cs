@@ -125,6 +125,7 @@ public class Program
             Services.GetRequiredService<FoxTypeMenuHandler>(),
             Services.GetRequiredService<ErrorHandler>(),
             Services.GetRequiredService<NsfwHandler>(),
+            Services.GetRequiredService<RuleEmbedHandler>(),
             Services.GetRequiredService<PronounsHandler>()
         });
     }
@@ -135,6 +136,7 @@ public class Program
         Collection.AddSingleton<NsfwHandler>();
         Collection.AddSingleton<ErrorHandler>();
         Collection.AddSingleton<PronounsHandler>();
+        Collection.AddSingleton<RuleEmbedHandler>();
     }
 
     private static void CreateLogger()

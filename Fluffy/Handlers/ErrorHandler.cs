@@ -44,23 +44,23 @@ public class ErrorHandler : IHandler
                 .Build());
     }
 
-    public static void HandleError(string message, Exception exception)
+    public static void HandleError(string message, Exception ex)
     {
-        _instance._logger.LogError(message, exception);
+        _instance._logger.LogError(message: message, exception: ex);
         Task.Factory.StartNew(async () =>
         {
             try
             {
-                await _instance.HandleErrorInternal(message, exception);
+                await _instance.HandleErrorInternal(message, ex);
             }
-            catch (Exception ex)
+            catch (Exception err)
             {
-                _instance._logger.LogError(message: "An error occurred trying to send the error message.", exception: ex);
+                _instance._logger.LogError(message: "An error occurred trying to send the error message.", exception: err);
             }
         });
     }
 
-    public static void HandleInteractionError(string message, IInteractionContext context)
+    public static void HandleInteractionError(string message, IDiscordInteraction context)
     {
         Task.Factory.StartNew(async () =>
         {
@@ -70,8 +70,8 @@ public class ErrorHandler : IHandler
                     ? $"❌ ┊ {message}"
                     : "❌ ┊ An internal error occurred. Please try again later.";
                 
-                if (context.Interaction.HasResponded)
-                    await context.Interaction.FollowupAsync(
+                if (context.HasResponded)
+                    await context.FollowupAsync(
                         ephemeral: true,
                         embed: new EmbedBuilder()
                             .WithDescription(description)
@@ -79,7 +79,7 @@ public class ErrorHandler : IHandler
                             .WithColor(0xff0f0f)
                             .Build());
                 else 
-                    await context.Interaction.RespondAsync(
+                    await context.RespondAsync(
                         ephemeral: true,
                         embed: new EmbedBuilder()
                             .WithDescription(description)

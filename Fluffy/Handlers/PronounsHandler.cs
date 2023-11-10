@@ -37,6 +37,7 @@ public class PronounsHandler : IHandler
         catch (Exception ex)
         {
             ErrorHandler.HandleError("An error occurred when trying to handle a select menu response.", ex);
+            ErrorHandler.HandleInteractionError("An error occurred when trying to handle a select menu response.", component);
         }
     }
 

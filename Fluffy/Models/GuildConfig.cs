@@ -11,6 +11,8 @@ public class GuildConfig
     public ulong? FoxTypeMessage { get; set; }
     public ulong? PronounsMessage { get; set; }
     public ulong? NsfwMessage { get; set; }
+    public ulong? NsfwRulesMessage { get; set; }
+    public ulong? GeneralRulesMessage { get; set; }
     
     public ulong FoxRoleHeaderRoleId { get; set; }
     
@@ -44,6 +46,7 @@ public class GuildConfig
     public ulong UnknownPronounsRoleId { get; set; }
     
     public ulong NaughtyFoxRoleId { get; set; }
+    public ulong NaughtyFoxUnapprovedRoleId { get; set; }
     public string NaughtyFoxRoleEmote { get; set; }
     
     public string PronounsBannerImageUrl { get; set; }
@@ -54,7 +57,9 @@ public class GuildConfig
     public string NsfwSectionBannerImageUrl { get; set; }
 
     public ulong ErrorChannel { get; set; }
-    
+    public ulong GeneralRulesChannel { get; set; }
+    public ulong NsfwRulesChannel { get; set; }
+
     public async Task Update(Action<GuildConfig> action)
     {
         action(this);

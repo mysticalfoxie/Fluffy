@@ -37,6 +37,7 @@ public class FoxTypeMenuHandler : IHandler
         catch (Exception ex)
         {
             ErrorHandler.HandleError("An error occurred when trying to handle a select menu response.", ex);
+            ErrorHandler.HandleInteractionError("An error occurred when trying to handle a select menu response.", component);
         }
     }
 
@@ -128,7 +129,7 @@ public class FoxTypeMenuHandler : IHandler
     {
         return await _channel.SendMessageAsync(
             embed: new EmbedBuilder()
-                .WithTitle("­ ­ ­ ­ ­ - ̗̀  ­ ­ What kind of fox are you? ­ ­ ̖́-")
+                .WithTitle("­ ­ ­ ­ ­ ­ - ̗̀  ­ ­ What kind of fox are you? ­ ­ ̖́-")
                 .WithDescription(
                     "🦊 Choose your fox type from the dropdown below!\n" + 
                     "✨ By selecting your race, your username's color will be influenced accordingly.\n" + 
