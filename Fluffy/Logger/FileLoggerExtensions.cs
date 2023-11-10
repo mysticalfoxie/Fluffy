@@ -9,7 +9,7 @@ public static class FileLoggerExtensions
         if (directoryInfo is not null && !directoryInfo.Exists)
             directoryInfo.Create();
         
-        var filename = DateTime.Now.ToString("dd.MM.yyyy - hh_mm_ss") + ".log";
+        var filename = DateTime.Now.ToString("dd.MM.yyyy-HH.mm.ss") + ".log";
         var directory = directoryInfo ?? new DirectoryInfo(Environment.CurrentDirectory);
         var filepath = Path.Combine(directory.FullName, filename);
         var logger = new FileLoggerProvider(filepath);

@@ -21,7 +21,7 @@ public class FileLogger : ILogger
         if (!IsEnabled(logLevel))
             return;
 
-        var logEntry = $"{DateTime.Now:dd.MM.yyyy - hh:mm:ss.tttttt} [{logLevel.ToString().PadRight("Information".Length, ' ')}]: {formatter(state, exception)}\n";
+        var logEntry = $"{DateTime.Now:dd.MM.yyyy - HH:mm:ss.ffff} [{logLevel.ToString().PadRight("Information".Length, ' ')}]: {formatter(state, exception)}\n";
         File.AppendAllText(_logFilePath, logEntry, Encoding.Unicode);
     }
 }
