@@ -49,6 +49,9 @@ public class NsfwHandler : IHandler
             }
             else
             {
+                if (user.RoleIds.Contains(Program.GuildConfig.NaughtyFoxUnapprovedRoleId))
+                    await user.RemoveRoleAsync(Program.GuildConfig.NaughtyFoxUnapprovedRoleId);
+                
                 await arguments.RespondAsync(
                     ephemeral: true,
                     embed: new EmbedBuilder()
