@@ -19,7 +19,7 @@ public class PronounsHandler : IHandler
         _logger = logger;
     }
 
-    public int Order => 1;
+    public int Order => 0;
 
     public void Register()
     {
@@ -123,8 +123,15 @@ public class PronounsHandler : IHandler
     {
         return await _channel.SendMessageAsync(
             embed: new EmbedBuilder()
-                .WithTitle("Pronouns")
-                .WithDescription("How do you like to be called?\nFeel free to choose your pronouns:")
+                .WithTitle("­ ­ ­ ­ ­ ­ ­ ­ - ̗̀  ­ ­ Select your Pronouns ­ ­ ̖́-")
+                .WithDescription(
+                    "🌈 ­ Selecting the right pronouns is important for creating an inclusive and respectful community.\n" +
+                    "Our Pronoun Picker feature allows you to easily choose the pronouns that best represent your gender identity. Embrace self-expression and let others know how you wish to be referred to!\n\n" +
+                    "🔹 Simply select your preferred pronouns from the dropdown menu below.\n" +
+                    "🔹 Once you've made your selection, your chosen pronouns will be in your server profile, helping others address you correctly.\n" +
+                    "🔹 Feel free to update your pronouns at any time.\n\n" +
+                    "❗ Remember, respecting and honoring each other's pronouns is an essential part of creating a safe and inclusive space.")
+                .WithImageUrl(Program.GuildConfig.PronounsBannerImageUrl)
                 .WithColor(0x9d00e0)
                 .Build(),
             components: new ComponentBuilder()

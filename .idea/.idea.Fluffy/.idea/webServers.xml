@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b31fa32e-7145-40e3-99b9-dc6d54e0c125" name="M1chelle99">
+        <fileTransfer rootFolder="/opt/fluffy" accessType="SFTP" host="m1chelle99.me" port="22" sshConfigId="b9c427c3-3310-44ca-a487-2b2b23d06319" sshConfig="root@m1chelle99.me:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" connections="10" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+        <option name="numberOfConnections" value="10" />
+      </webServer>
+    </option>
+  </component>
+</project>

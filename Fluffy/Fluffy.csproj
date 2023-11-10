@@ -5,6 +5,15 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
+        <Title>Fluffy Bot</Title>
+        <Authors>MysticalFoxie</Authors>
+        <Copyright>michellebecker2003@gmail.com</Copyright>
+        <PackageProjectUrl>https://github.com/MysticalFoxie/Fluffy</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/MysticalFoxie/Fluffy/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/MysticalFoxie/Fluffy</RepositoryUrl>
+        <AssemblyVersion>1.0.1</AssemblyVersion>
+        <FileVersion>1.0.1</FileVersion>
+        <NeutralLanguage>en-US</NeutralLanguage>
     </PropertyGroup>
 
     <ItemGroup>

@@ -138,20 +138,10 @@ public class Program
     private static void CreateLogger()
     {
         Console.OutputEncoding = System.Text.Encoding.Unicode;
-        Collection.AddLogging(builder =>
-        {
-#if DEBUG
-            builder
-                .SetMinimumLevel(LogLevel.Trace)
-                .AddConsole();
-#elif RELEASE
-            builder
-                .SetMinimumLevel(LogLevel.Information)
-                .AddSystemdConsole()
-                .AddDebug()
-                .AddConsole();
-#endif
-        });
+        Collection.AddLogging(builder => builder
+            .SetMinimumLevel(LogLevel.Trace)
+            .AddConsole()
+            .AddDebug());
     }
 
     private static void LogAssemblyVersion()

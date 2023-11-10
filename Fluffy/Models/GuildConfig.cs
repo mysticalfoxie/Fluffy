@@ -45,6 +45,13 @@ public class GuildConfig
     
     public ulong NaughtyFoxRoleId { get; set; }
     public string NaughtyFoxRoleEmote { get; set; }
+    
+    public string PronounsBannerImageUrl { get; set; }
+    public string RulesBannerImageUrl { get; set; }
+    public string SupportBannerImageUrl { get; set; }
+    public string FoxTypeBannerImageUrl { get; set; }
+    public string NsfwRulesBannerImageUrl { get; set; }
+    public string NsfwSectionBannerImageUrl { get; set; }
 
     public ulong ErrorChannel { get; set; }
     

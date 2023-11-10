@@ -19,7 +19,7 @@ public class FoxTypeMenuHandler : IHandler
         _logger = logger;
     }
 
-    public int Order => 0;
+    public int Order => 2;
 
     public void Register()
     {
@@ -128,8 +128,17 @@ public class FoxTypeMenuHandler : IHandler
     {
         return await _channel.SendMessageAsync(
             embed: new EmbedBuilder()
-                .WithTitle("Fox Type")
-                .WithDescription("Which type of fox are you?\nChoose from our list of these fox types:")
+                .WithTitle("­ ­ ­ ­ ­ - ̗̀  ­ ­ What kind of fox are you? ­ ­ ̖́-")
+                .WithDescription(
+                    "🦊 Choose your fox type from the dropdown below!\n" + 
+                    "✨ By selecting your race, your username's color will be influenced accordingly.\n" + 
+                    "👤 If you prefer, you can choose \"Human\" as well, if you don't identify as a fox.\n\n" +
+                    "Instructions:\n\n" +
+                    "🔹 Click on the dropdown menu below to reveal the available fox races.\n" +
+                    "🔹 Select the fox type that best represents you or choose \"Human\" if you prefer.\n" +
+                    "🔹 When you made your selection, watch as your username's color transforms to match your chosen fox type.\n\n" +
+                    "🎉 Embrace your foxy nature and let your personality stand!\n")
+                .WithImageUrl(Program.GuildConfig.FoxTypeBannerImageUrl)
                 .WithColor(0xfa0079)
                 .Build(),
             components: new ComponentBuilder()

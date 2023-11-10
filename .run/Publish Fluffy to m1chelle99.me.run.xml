@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Publish Fluffy to m1chelle99.me" type="DotNetPublishAndUpload" factoryName="Publish to custom server">
+    <riderPublish configuration="Release" platform="Any CPU" runtime="linux-x64" server_id="b31fa32e-7145-40e3-99b9-dc6d54e0c125" serverName="M1chelle99" target_framework="net7.0" uuid_high="5778682989824853548" uuid_low="-5868363472721831841" />
+    <method v="2">
+      <option name="Build Solution" enabled="true" />
+      <option name="RemoteToolBeforeRunTask" enabled="true" actionId="RemoteTool_Remote Tools_Stop Service" />
+    </method>
+  </configuration>
+</component>

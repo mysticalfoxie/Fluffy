@@ -16,7 +16,7 @@ public class NsfwHandler : IHandler
         _logger = logger;
     }
 
-    public int Order => 2;
+    public int Order => 1;
 
     public void Register()
     {
@@ -29,7 +29,7 @@ public class NsfwHandler : IHandler
         {
             if (arguments.Message.Id != _message.Id) return;
             if (arguments.Data.CustomId != "nsfw") return;
-            
+
             var user = await _channel.GetUserAsync(arguments.User.Id);
             if (user.RoleIds.Contains(Program.GuildConfig.NaughtyFoxRoleId))
             {
@@ -59,7 +59,7 @@ public class NsfwHandler : IHandler
             ErrorHandler.HandleError("An error occurred when trying to handle a select menu response.", ex);
         }
     }
-    
+
     public async Task Initialize()
     {
         _channel = (ITextChannel)await Program.Client.GetChannelAsync(Program.GuildConfig.RoleChannel);
@@ -83,11 +83,15 @@ public class NsfwHandler : IHandler
     {
         return await _channel.SendMessageAsync(
             embed: new EmbedBuilder()
-                .WithTitle("NSFW Section")
+                .WithTitle("­ ­ ­ ­ - ̗̀  ­ ­  Not Safe for Work (NSFW) Section Access ­ ­ ̖́-")
                 .WithDescription(
-                    "When you are older then 18 and ok with seeing nsfw (not safe for work)\n" + 
-                    "content, you can click the button down below.")
-                .WithFooter("You can also click it to remove the section again.")
+                    "🔞 By clicking the button below, you can gain access to our NSFW Section.\n" +
+                    "❗ Please note that you have to be **18+** to be allowed view this area!\n" +
+                    "❗ By clicking this button you confirm that you are **18+**.\n\n" +
+                    "🔹 If you don't have access yet, click the button below to gain entry.\n" +
+                    "🔹 If you already have access, clicking the button will remove your access.\n\n" +
+                    "Note: It's important to ensure that the age limitation is in compliance with the Discord terms of service and community guidelines.")
+                .WithImageUrl(Program.GuildConfig.NsfwRulesBannerImageUrl)
                 .WithColor(0xe00700)
                 .Build(),
             components: new ComponentBuilder()
