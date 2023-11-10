@@ -12,8 +12,8 @@
         <PackageProjectUrl>https://github.com/MysticalFoxie/Fluffy</PackageProjectUrl>
         <PackageLicenseUrl>https://github.com/MysticalFoxie/Fluffy/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/MysticalFoxie/Fluffy</RepositoryUrl>
-        <AssemblyVersion>1.0.3</AssemblyVersion>
-        <FileVersion>1.0.3</FileVersion>
+        <AssemblyVersion>1.0.4</AssemblyVersion>
+        <FileVersion>1.0.4</FileVersion>
         <NeutralLanguage>en-US</NeutralLanguage>
     </PropertyGroup>
 

@@ -91,7 +91,7 @@ public class NsfwHandler : IHandler
                     "🔹 If you don't have access yet, click the button below to gain entry.\n" +
                     "🔹 If you already have access, clicking the button will remove your access.\n\n" +
                     "Note: It's important to ensure that the age limitation is in compliance with the Discord terms of service and community guidelines.")
-                .WithImageUrl(Program.GuildConfig.NsfwRulesBannerImageUrl)
+                .WithImageUrl(Program.GuildConfig.NsfwSectionBannerImageUrl)
                 .WithColor(0xe00700)
                 .Build(),
             components: new ComponentBuilder()
