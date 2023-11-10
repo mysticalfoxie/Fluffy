@@ -1,8 +1,10 @@
 ﻿using System.Reflection;
+using System.Text;
 using Discord;
 using Discord.WebSocket;
 using Fluffy.DatabaseManagement;
 using Fluffy.Handlers;
+using Fluffy.Logger;
 using Fluffy.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -18,7 +20,7 @@ public class Program
     public static GuildConfig GuildConfig { get; private set; }
     public static DiscordSocketClient Client { get; private set; }
     public static List<IHandler> Handlers { get; } = new();
-    
+
     private static readonly IServiceCollection Collection = new ServiceCollection();
 
     public static async Task Main()
@@ -46,9 +48,9 @@ public class Program
             DefaultRetryMode = RetryMode.RetryRatelimit | RetryMode.RetryTimeouts,
             UseInteractionSnowflakeDate = false,
             GatewayIntents = GatewayIntents.AllUnprivileged
-                | GatewayIntents.GuildPresences
-                | GatewayIntents.GuildMembers
-                | GatewayIntents.MessageContent,
+                             | GatewayIntents.GuildPresences
+                             | GatewayIntents.GuildMembers
+                             | GatewayIntents.MessageContent,
             AlwaysDownloadUsers = true
         };
 
@@ -63,20 +65,20 @@ public class Program
         //         Logger.LogTrace($"[{message.Severity.ToString()}]: {message.Message}");
         //     return Task.CompletedTask;
         // };
-        
+
         Logger.LogInformation("Discord client initialized.");
-        
+
         var tcs = new TaskCompletionSource();
         Client.Connected += () =>
         {
             tcs.SetResult();
             return Task.CompletedTask;
         };
-        
+
         await Client.LoginAsync(TokenType.Bot, AppConfig.Client.LoginToken);
         await Client.StartAsync();
         await tcs.Task;
-        
+
         Logger.LogInformation("Discord client logged in.");
     }
 
@@ -95,7 +97,7 @@ public class Program
     {
         var appConfigContent = await File.ReadAllTextAsync("settings.json");
         AppConfig = JsonConvert.DeserializeObject<AppConfig>(appConfigContent);
-        
+
         var guildConfigContent = await File.ReadAllTextAsync("guild.json");
         GuildConfig = JsonConvert.DeserializeObject<GuildConfig>(guildConfigContent);
     }
@@ -134,14 +136,21 @@ public class Program
         Collection.AddSingleton<ErrorHandler>();
         Collection.AddSingleton<PronounsHandler>();
     }
-    
+
     private static void CreateLogger()
     {
-        Console.OutputEncoding = System.Text.Encoding.Unicode;
+        Console.OutputEncoding = Encoding.Unicode;
+
+#if RELEASE
         Collection.AddLogging(builder => builder
             .SetMinimumLevel(LogLevel.Trace)
-            .AddConsole()
-            .AddDebug());
+            .AddLogFile(new DirectoryInfo("Logs"))
+            .AddConsole());
+#else
+        Collection.AddLogging(builder => builder
+            .SetMinimumLevel(LogLevel.Trace)
+            .AddConsole());
+#endif
     }
 
     private static void LogAssemblyVersion()
