@@ -126,6 +126,7 @@ public class Program
             Services.GetRequiredService<ErrorHandler>(),
             Services.GetRequiredService<NsfwHandler>(),
             Services.GetRequiredService<RuleEmbedHandler>(),
+            Services.GetRequiredService<UserLogHandler>(),
             Services.GetRequiredService<PronounsHandler>()
         });
     }
@@ -137,6 +138,7 @@ public class Program
         Collection.AddSingleton<ErrorHandler>();
         Collection.AddSingleton<PronounsHandler>();
         Collection.AddSingleton<RuleEmbedHandler>();
+        Collection.AddSingleton<UserLogHandler>();
     }
 
     private static void CreateLogger()

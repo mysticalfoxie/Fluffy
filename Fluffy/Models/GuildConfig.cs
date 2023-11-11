@@ -6,6 +6,7 @@ public class GuildConfig
 {
     public ulong Guild { get; set; }
     public ulong RoleChannel { get; set; }
+    public ulong MemberLogChannel { get; set; }
     
     // When null send it, otherwise use it
     public ulong? FoxTypeMessage { get; set; }

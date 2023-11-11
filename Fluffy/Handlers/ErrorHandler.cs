@@ -1,4 +1,5 @@
 using Discord;
+using Discord.WebSocket;
 using Microsoft.Extensions.Logging;
 
 namespace Fluffy.Handlers;
@@ -24,7 +25,12 @@ public class ErrorHandler : IHandler
 
     private async Task OnDisconnected(Exception exception)
     {
-        if (exception is not null)
+        var blacklist = new[]
+        {
+            nameof(GatewayReconnectException)
+        };
+        
+        if (exception is not null && !blacklist.Contains(exception.GetType().Name))
             await HandleErrorInternal("The discord client disconnected unexpected.", exception);
     }
 
