@@ -62,6 +62,12 @@ public class GuildConfig
     public ulong NsfwRulesChannel { get; set; }
     public ulong StrangerRoleId { get; set; }
 
+    public ulong? VoiceHubId { get; set; }
+    public ulong VoiceHubCategoryId { get; set; }
+    public string VoiceHubCategoryName { get; set; }
+    public string VoiceHubName { get; set; }
+    public string TempVoiceNamingPattern { get; set; } // @"🔊・「\d+」fox hole from .*"
+
     public async Task Update(Action<GuildConfig> action)
     {
         action(this);

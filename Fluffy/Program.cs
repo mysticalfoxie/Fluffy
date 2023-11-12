@@ -4,7 +4,6 @@ using Discord;
 using Discord.WebSocket;
 using Fluffy.DatabaseManagement;
 using Fluffy.Handlers;
-using Fluffy.Logger;
 using Fluffy.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
